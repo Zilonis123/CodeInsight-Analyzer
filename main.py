@@ -1,4 +1,6 @@
 import os, sys, magic, json
+from tqdm import tqdm
+import time
 
 def is_text_file(file_path):
     # check if a file is a text file
@@ -6,6 +8,11 @@ def is_text_file(file_path):
     file_type = mime.from_file(file_path)
 
     return "text" in file_type.lower()
+
+def count_files(directory):
+    total_files = sum([len(files) for _, _, files in os.walk(directory)])
+    return total_files
+
 
 def process_directory(directory: str) -> dict:
     file_extension_count = {}
@@ -17,7 +24,7 @@ def process_directory(directory: str) -> dict:
 
     file.close()
 
-    for root, dirs, files in os.walk(directory):
+    for root, dirs, files in tqdm(os.walk(directory), desc="Processing", unit="files", leave=True):
 
         if any(folder in root for folder in excluded_folders):
             continue  # Skip the entire subdirectory
@@ -29,7 +36,7 @@ def process_directory(directory: str) -> dict:
             # Get the file extension
             _, file_extension = os.path.splitext(file)
 
-            if not file_extension.isspace() and is_text_file(file_path):
+            if file_extension != "" and is_text_file(file_path):
                 file_extension_count[file_extension] = file_extension_count.get(file_extension, 0) + 1
 
     return file_extension_count
@@ -43,7 +50,9 @@ if __name__ == "__main__":
         print("Usage: python script.py <directory_path>")
     else:
         target_directory: str = sys.argv[1]
-        
+
+        files = count_files(target_directory)
+        print(f"Searching {files} files")
         file_count: dict = process_directory(target_directory)
 
         for file_ext, count in file_count.items():
