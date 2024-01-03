@@ -25,7 +25,7 @@ CodeInsight Analyzer is a Python script designed to provide valuable insights in
 
 ## Configuration
 
-- Customize the `ignore_list.json` file to specify folders you want to exclude from the analysis.
+- Customize the `exclude.json` file to specify folders you want to exclude from the analysis.
 
 ## Requirements
 
