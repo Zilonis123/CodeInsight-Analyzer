@@ -9,23 +9,28 @@ CodeInsight Analyzer is a Python script designed to provide valuable insights in
 - [ ] **Coding Patterns**: Highlight common coding patterns and structures.
 - [ ] **Project Structure**: Get a clear overview of your project's organization.
 
-## Usage
+## Installation
 
-1. **Install Dependencies**:
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Zilonis123/CodeInsight-Analyzer && cd CodeInsight-Analyzer
+   ```
+
+2. **Install Dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
+## Usage
 
-2. **Run CodeInsight Analyzer**:
-   ```bash
-   python main.py <directory_path>
-   ```
+```bash
+python main.py <directory_path>
+```
 
-   Replace `<directory_path>` with the path to your code repository.
+Replace `<directory_path>` with the path to your code repository.
 
 ## Configuration
 
-- Customize the `exclude.json` file to specify folders you want to exclude from the analysis.
+- Customize the `exclude.json` file to specify folders or files you want to exclude from the analysis, but be precise because the names are case sensitive.
 
 ## Requirements
 
