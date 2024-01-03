@@ -1,0 +1,30 @@
+{
+    "folders": [
+        "node_modules",
+        ".git",
+        "venv",
+        "__pycache__",
+        ".vscode",
+        ".idea",
+        ".vs",
+        ".sass-cache",
+        "dist",
+        "build",
+        "out",
+        "bin",
+        "obj",
+        ".DS_Store",
+        "Thumbs.db",
+        ".metadata",
+        ".gradle",
+        ".settings",
+        ".svn",
+        ".hg",
+        ".bzr",
+        ".tox",
+        ".pytest_cache",
+        "dist",
+        "build",
+        ".history"
+    ]
+}
