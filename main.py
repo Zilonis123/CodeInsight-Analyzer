@@ -41,10 +41,6 @@ def process_directory(directory: str) -> dict:
 
     return file_extension_count
 
-    # Display the results
-    for extension, count in file_extension_count.items():
-        print(f"{extension}: {count} file(s)")
-
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python script.py <directory_path>")
