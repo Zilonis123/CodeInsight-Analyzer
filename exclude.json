@@ -26,5 +26,9 @@
         "dist",
         "build",
         ".history"
+    ],
+    "files": [
+        "README.md",
+        "requirements.txt"
     ]
 }

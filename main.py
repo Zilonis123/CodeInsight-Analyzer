@@ -21,6 +21,7 @@ def process_directory(directory: str) -> dict:
     file = open("exclude.json")
     excluded = json.load(file)
     excluded_folders: list[str] = excluded.get("folders", [])
+    excluded_files: list[str] = excluded.get("files", [])
 
     file.close()
 
@@ -34,7 +35,10 @@ def process_directory(directory: str) -> dict:
             file_path = os.path.join(root, file)
             
             # Get the file extension
-            _, file_extension = os.path.splitext(file)
+            file_name, file_extension = os.path.splitext(file)
+
+            if f"{file_name}{file_extension}" in excluded_files:
+                continue
 
             if file_extension != "" and is_text_file(file_path):
                 file_extension_count[file_extension] = file_extension_count.get(file_extension, 0) + 1
@@ -43,7 +47,7 @@ def process_directory(directory: str) -> dict:
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python script.py <directory_path>")
+        print("Usage: python main.py <directory_path>")
     else:
         target_directory: str = sys.argv[1]
 

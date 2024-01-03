@@ -18,7 +18,7 @@ CodeInsight Analyzer is a Python script designed to provide valuable insights in
 
 2. **Run CodeInsight Analyzer**:
    ```bash
-   python code_insight_analyzer.py <directory_path>
+   python main.py <directory_path>
    ```
 
    Replace `<directory_path>` with the path to your code repository.
