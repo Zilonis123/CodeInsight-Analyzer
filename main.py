@@ -11,7 +11,13 @@ if __name__ == "__main__":
     else:
         target_directory: str = sys.argv[1]
 
-        files = count_files(target_directory)
+        # get excluded folders
+        file = open("exclude.json")
+        excluded: dict = json.load(file)
+        file.close()
+
+        files: int = count_files(target_directory, excluded.get("folders", []))
+
         print(f"Searching {Fore.GREEN}{files}{Style.RESET_ALL} files")
         file_count: dict = process_directory(target_directory)
 

@@ -5,16 +5,11 @@ import json, os
 from src.utils.code_analysis_helpers import *
 
 
-def process_directory(directory: str) -> dict:
+def process_directory(directory: str, excluded={}) -> dict:
     file_extension_count = {}
 
-    # get excluded folders
-    file = open("exclude.json")
-    excluded = json.load(file)
     excluded_folders: list[str] = excluded.get("folders", [])
     excluded_files: list[str] = excluded.get("files", [])
-
-    file.close()
 
     for root, dirs, files in tqdm(os.walk(directory), desc="Processing", unit="files", leave=True):
 
