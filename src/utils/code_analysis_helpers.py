@@ -1,10 +1,8 @@
-
-import magic
-
+import mimetypes
 
 def is_text_file(file_path: str) -> bool:
     # check if a file is a text file
-    mime = magic.Magic()
-    file_type = mime.from_file(file_path)
+    mime: str = mimetypes.guess_type(file_path)[0]
 
-    return "text" in file_type.lower()
+    isText = "text" in mime or ".json" in file_path # account for .json displaying as "application/json"
+    return isText
