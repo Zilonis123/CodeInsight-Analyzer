@@ -1,6 +1,6 @@
 import os, sys, magic, json
 from tqdm import tqdm
-import time
+from colorama import Fore, Style
 
 def is_text_file(file_path):
     # check if a file is a text file
@@ -52,8 +52,8 @@ if __name__ == "__main__":
         target_directory: str = sys.argv[1]
 
         files = count_files(target_directory)
-        print(f"Searching {files} files")
+        print(f"Searching {Fore.GREEN}{files}{Style.RESET_ALL} files")
         file_count: dict = process_directory(target_directory)
 
         for file_ext, count in file_count.items():
-            print(f"{file_ext} found {count} times")
+            print(f"{file_ext} found {Fore.GREEN}{count}{Style.RESET_ALL} times")
