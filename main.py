@@ -7,6 +7,12 @@ from src.analysis.code_analyzer import *
 
 
 def search() -> None:
+    def draw_output(file_count: dict) -> None:
+        output = ""
+        for file_ext, count in file_count.items():
+            output += f"{file_ext} found {count} times\n"
+        output_string.set(output)
+    
     target_directory: str = entry_string.get()
     
     # reset input and output
@@ -18,13 +24,9 @@ def search() -> None:
         output_string.set(f"Error: Provided path ({target_directory}) is incorrect!")
         return
     
-    file_count: dict = process_directory(target_directory)
+    file_count: dict = process_directory(target_directory, excluded, draw_output)
     
-    output = ""
-    for file_ext, count in file_count.items():
-        output += f"{file_ext} found {count} times\n"
-        
-    output_string.set(output)
+    
 
 if __name__ == "__main__":
     # get excluded 
