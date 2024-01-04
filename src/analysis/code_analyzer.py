@@ -5,7 +5,7 @@ import json, os
 from src.utils.code_analysis_helpers import *
 
 
-def process_directory(directory: str, excluded={}) -> dict:
+def process_directory(directory: str, excluded, update_function) -> dict:
     file_extension_count = {}
 
     excluded_folders: list[str] = excluded.get("folders", [])
@@ -29,4 +29,7 @@ def process_directory(directory: str, excluded={}) -> dict:
             if file_extension != "" and is_text_file(file_path):
                 file_extension_count[file_extension] = file_extension_count.get(file_extension, 0) + 1
 
+        # call the update function
+        update_function(file_extension_count)
+        
     return file_extension_count
