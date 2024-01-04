@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from ttkthemes import ThemedTk
 
 import os, json
 from src.analysis.code_analyzer import *
@@ -32,9 +33,9 @@ if __name__ == "__main__":
     file.close()
 
 
-    window = tk.Tk()
+    window = ThemedTk(theme="black")
     window.title("Code Analyzer")
-    window.geometry("300x150")
+    window.geometry("600x400")
     window.resizable(False, False)
     
 
@@ -47,11 +48,13 @@ if __name__ == "__main__":
 
     entry.pack(side="left", padx=10)
     button.pack(side="left")
-    input_frame.pack()
 
     # output
     output_string = tk.StringVar()
     output_label = ttk.Label(master=window, textvariable=output_string)
-    output_label.pack()
+    
+    # layout
+    input_frame.pack(side="left", expand=True, fill="both")
+    output_label.pack(side="right", expand=True, fill="both")
 
     window.mainloop()
