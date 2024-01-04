@@ -25,31 +25,33 @@ def search() -> None:
         
     output_string.set(output)
 
-
-# get excluded 
-file = open("exclude.json")
-excluded: dict = json.load(file)
-file.close()
-
-
-window = tk.Tk()
-window.title("Code Analyzer")
-window.geometry("300x150")
+if __name__ == "__main__":
+    # get excluded 
+    file = open("exclude.json")
+    excluded: dict = json.load(file)
+    file.close()
 
 
-# input
-input_frame = ttk.Frame(master=window)
-entry_string = tk.StringVar()
-entry = ttk.Entry(master=input_frame, textvariable=entry_string)
-button = ttk.Button(master=input_frame, text="Search", command=search)
+    window = tk.Tk()
+    window.title("Code Analyzer")
+    window.geometry("300x150")
+    window.resizable(False, False)
+    
 
-entry.pack(side="left", padx=10)
-button.pack(side="left")
-input_frame.pack()
 
-# output
-output_string = tk.StringVar()
-output_label = ttk.Label(master=window, textvariable=output_string)
-output_label.pack()
+    # input
+    input_frame = ttk.Frame(master=window)
+    entry_string = tk.StringVar()
+    entry = ttk.Entry(master=input_frame, textvariable=entry_string)
+    button = ttk.Button(master=input_frame, text="Search", command=search)
 
-window.mainloop()
+    entry.pack(side="left", padx=10)
+    button.pack(side="left")
+    input_frame.pack()
+
+    # output
+    output_string = tk.StringVar()
+    output_label = ttk.Label(master=window, textvariable=output_string)
+    output_label.pack()
+
+    window.mainloop()
