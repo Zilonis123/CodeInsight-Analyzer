@@ -5,7 +5,6 @@ from ttkthemes import ThemedTk
 import os, json
 from src.analysis.code_analyzer import *
 
-
 def search() -> None:
     def draw_output(file_count: dict) -> None:
         output = ""
