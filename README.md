@@ -22,11 +22,15 @@ CodeInsight Analyzer is a Python script designed to provide valuable insights in
    ```
 ## Usage
 
-```bash
-python main.py <directory_path>
-```
+1. Open the application by running the following command in the terminal:
 
-Replace `<directory_path>` with the path to your code repository.
+    ```bash
+    python main.py
+    ```
+
+2. After the application is launched, enter the path to the repository you want to check.
+
+3. Wait for the results to be displayed.
 
 ## Configuration
 
